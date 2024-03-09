@@ -1,5 +1,5 @@
 # TODO: Determine which skeleton tests have already been implemented.
-
+# TODO: How can we see which lines of answer_tags_controller.rb are covered and which aren't?
 describe AnswerTagsController do
   # factory objects required for "action_allowed" test cases
   let(:instructor) { build(:instructor, id: 1) }
@@ -193,6 +193,8 @@ describe AnswerTagsController do
   # Test skeletons provided by Vyshnavi Adusumelli
   describe "index" do
     context "when assignment_id and questionnaire_id are not provided" do
+      # I think these are provided under 'when the questionnaire_id is nil' and
+      #  'when the assignment_id is nil'
       it "returns all tag prompts" do
         # Test setup
         # ...
