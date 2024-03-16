@@ -1,0 +1,28 @@
+on: ["push", "pull_request"]
+
+name: Test Coveralls
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.4.10 # Replace with the desired Ruby version
+
+    - name: Install dependencies
+      run: |
+        bundle install
+
+    - name: Run tests with coverage
+      run: |
+        bundle exec rspec spec/controllers/answer_tags_controller_spec.rb
+        bundle exec rake coveralls:push
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
